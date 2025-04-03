@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirect</title>
+  </head>
+  <body>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+
+      if (code) {
+        chrome.runtime.sendMessage("coddlfmliiikjbbjmiakcfplpbaboddb", {
+          action: "codeReceived",
+          code: code,
+        });
+        window.close(); // Close the redirect tab
+      } else {
+        console.error("No code found in URL.");
+      }
+    </script>
+  </body>
+</html>
