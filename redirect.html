@@ -9,11 +9,10 @@
       const code = urlParams.get("code");
 
       if (code) {
-        chrome.runtime.sendMessage("coddlfmliiikjbbjmiakcfplpbaboddb", {
-          action: "codeReceived",
-          code: code,
-        });
-        window.close(); // Close the redirect tab
+        setTimeout(() => {
+            chrome.runtime.sendMessage('coddlfmliiikjbbjmiakcfplpbaboddb', { action: 'codeReceived', code: code });
+            window.close();
+        }, 100); 
       } else {
         console.error("No code found in URL.");
       }
